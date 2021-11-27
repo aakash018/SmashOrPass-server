@@ -1,4 +1,6 @@
-import route from "./apis/swiper";
+import swiper from "./apis/swiper";
+import profile from "./apis/profiles";
+import leaderboard from "./apis/leaderboard";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -24,10 +26,12 @@ if (process.env.DATABASE_URI) {
   console.log("ENV for DATABASE not found :(");
 }
 
-app.use("/swiper", route);
+app.use("/swiper", swiper);
+app.use("/profile", profile);
+app.use("/leaderboard", leaderboard);
 
 app.get("/", (_, res) => {
-  res.send(`SERVER IS RUNNING ON ${PORT}`);
+  res.send(`<h1>SERVER IS RUNNING ON ${PORT}</h1>`);
 });
 
 app.listen(PORT, () => {

@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const swiper_1 = __importDefault(require("./apis/swiper"));
+const profiles_1 = __importDefault(require("./apis/profiles"));
+const leaderboard_1 = __importDefault(require("./apis/leaderboard"));
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
@@ -26,8 +28,10 @@ else {
     console.log("ENV for DATABASE not found :(");
 }
 app.use("/swiper", swiper_1.default);
+app.use("/profile", profiles_1.default);
+app.use("/leaderboard", leaderboard_1.default);
 app.get("/", (_, res) => {
-    res.send(`SERVER IS RUNNING ON ${PORT}`);
+    res.send(`<h1>SERVER IS RUNNING ON ${PORT}</h1>`);
 });
 app.listen(PORT, () => {
     console.log("RUNNING AT PORT", PORT);
